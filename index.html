@@ -112,10 +112,14 @@ No known Issues
 const imgData = context.getImageData(0, 0, 600, 500);
 // Get RGB Data from Image
 for (let i = 0; i < imgData.data.length; i += 4) {
-    // Set Red and Green to max (255) to create yellow
-    imgData.data[i] = 255;       // Red
-    imgData.data[i + 1] = 255;   // Green
-    imgData.data[i + 2] = 0;     // Blue (removed)
+    let red = imgData.data[i];
+    let green = imgData.data[i + 1];
+    let blue = imgData.data[i + 2];
+
+    // Keep red and green, suppress blue to bring out yellow
+    imgData.data[i] = red;             // Red stays
+    imgData.data[i + 1] = green;       // Green stays
+    imgData.data[i + 2] = 0;           // Blue is removed
 }
 
         context2.putImageData(imgData, 0, 0); //this tells the app to add the "yellow image" onto the SECOND canvas with "context.2"
