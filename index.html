@@ -110,7 +110,8 @@ No known Issues
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE */
           var imageData = context.getImageData(0, 0, canvas.width, canvas.height); //adding this allows the image to cover the canvas area using "canvas.width, canvas.height"
           var data = imageData.data; //adding this gives full control of pixels to be able to adjust with the following code below:
-
+ const imgData = context.getImageData(0, 0, 600, 500);
+         //Get RGB Data from Image
 for (var i = 0; i < data.length; i += 4) {
   // Set red and green to full intensity
   data[i] = 255;     // Red channel
@@ -140,9 +141,9 @@ for (var i = 0; i < data.length; i += 4) {
  <body>
   <div data-role="page">
     <div data-role="header">
-    <h1>Primary Colors</h1></div> <!-- /header -->
+    <h1>Image Scanner</h1></div> <!-- /header -->
     <div data-role="content">	
-      <h2>Push button to take picture.</h2> <!--MAIN label of text on page, tells user what to do-->
+      <h2>PPush the Button to Take a Picture!</h2> <!--MAIN label of text on page, tells user what to do-->
       <div>
         Press the Yellow Button to Create or Choose Image File: <!--SUBHEADING on page -->
         <input type="file" id="fileInput" STYLE="background-color: #fffb89;">
