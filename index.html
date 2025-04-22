@@ -109,15 +109,16 @@ No known Issues
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE */
     
- const imgData = context.getImageData(0, 0, 600, 500);
-         //Get RGB Data from Image
-for (var i = 0; i < data.length; i += 4) {
-  // Set red and green to full intensity
-  data[i] = 255;     // Red channel
-  data[i + 1] = 255; // Green channel
-  data[i + 2] = 0;   // Blue channel removed for yellow
-        }
-        context2.putImageData(imageData, 0, 0); //this tells the app to add the "yellow image" onto the SECOND canvas with "context.2"
+const imgData = context.getImageData(0, 0, 600, 500);
+// Get RGB Data from Image
+for (let i = 0; i < imgData.data.length; i += 4) {
+    // Set Red and Green to max (255) to create yellow
+    imgData.data[i] = 255;       // Red
+    imgData.data[i + 1] = 255;   // Green
+    imgData.data[i + 2] = 0;     // Blue (removed)
+}
+
+        context2.putImageData(imgData, 0, 0); //this tells the app to add the "yellow image" onto the SECOND canvas with "context.2"
         } // end of img.onload
         
         img.src = reader.result;
@@ -154,7 +155,7 @@ for (var i = 0; i < data.length; i += 4) {
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas'); //identifies the canvas 
         var context = canvas.getContext("2d"); //specifies 2d model for drawing 
-        context.font = '20pt Calibri'; //this define the font  
+        context.font = '20pt Serif'; //this define the font  
         context.fillStyle = "black"; //this sets the fill color for drawings 
         context.fillText("Original Image", 10, 20); //this is the text that will be displayed on the canvas and the dimensions 
       </script>
@@ -162,13 +163,13 @@ for (var i = 0; i < data.length; i += 4) {
 
      <!--SECOND canvas for yellow image-->
       <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!--changed to "myCanvas2 to add/identify a second canvas to the app-->
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas2 = document.getElementById('myCanvas2'); //identifies canvas 2 and searches code for 'myCanvas2' -- IMPORTANT to change variable names to match desired canvas with desired action
-        var context2 = canvas2.getContext("2d"); //specifies 2d model for drawing, again add "2" to keep actions within SECOND canvas
-        context2.font = '20pt Calibri'; //this define the font  
-        context2.fillStyle = "black"; //this sets the fill color for drawings 
-        context2.fillText("Yellow-Intensified Image", 10, 20); //this is the text that will be displayed on the canvas and the dimensions 
-      </script>
+     	<script> /* This script initiates the cavas and puts the text on the canvas "myCanvas2" */
+     		var canvas2 = document.getElementById("myCanvas2"); 
+		     var context2 = canvas2.getContext("2d"); 
+     		context2.font = "20pt Serif"; 
+     		context2.fillStyle = "black";
+     		context2.fillText("Blue-Intensified Image", 10, 20); 
+     	</script>
      <!--END of SECOND canvas-->
 <!--END OF APP BODY -->
      
